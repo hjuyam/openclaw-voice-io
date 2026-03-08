@@ -1,6 +1,6 @@
 # openclaw-voice-io
 
-A cross-channel voice I/O foundation repo: it turns voice messages you send in chat into text, so they can be handled like normal text commands (faster and searchable).
+A cross-channel voice I/O foundation repo: it turns voice messages you send in chat into text, so they can be handled like normal text commands (faster and searchable); and it can also reply to you with **voice** when needed (e.g., via Feishu native voice bubbles).
 
 - **Voice input (voice → text)**: treat voice as just another form of command input. Do STT normalization once at the very beginning and output text; downstream handling is identical to normal text commands.
 - **Voice output (text → Feishu native voice bubble)**: provided as an optional channel adapter (Feishu `msg_type=audio`).
