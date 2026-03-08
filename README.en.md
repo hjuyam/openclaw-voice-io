@@ -68,29 +68,36 @@ uv pip install -r requirements.txt
 cp .env.example .env
 ```
 
-At least:
-- `SHERPA_ONNX_MODEL_DIR`
-
-Optional (for Feishu sender):
-- `FEISHU_APP_ID`
-- `FEISHU_APP_SECRET`
-
-### 2) Voice → text
+### 2) Doctor
 
 ```bash
-export SHERPA_ONNX_MODEL_DIR=/path/to/sherpa-model-dir
-python skills/voice-input-normalizer/scripts/voice_to_text.py /path/to/audio.ogg
+python scripts/cli.py doctor
 ```
 
-### 3) Feishu send voice bubble (optional)
+### 3) Download models (recommended)
 
 ```bash
-python adapters/feishu/scripts/feishu_audio_send.py \
+python scripts/cli.py download-models
+# STT-only:
+python scripts/cli.py download-models --stt-only
+```
+
+### 4) Voice → text
+
+```bash
+export SHERPA_ONNX_MODEL_DIR=./models/sherpa/sherpa-onnx-paraformer-zh-small-2024-03-09
+python scripts/cli.py stt /path/to/audio.ogg
+```
+
+### 5) Feishu send voice bubble (optional)
+
+```bash
+python scripts/cli.py feishu-send-audio \
   --receive-id-type open_id \
   --receive-id ou_xxx \
   --text "Hello from Feishu audio bubble"
 
-python adapters/feishu/scripts/feishu_audio_send.py \
+python scripts/cli.py feishu-send-audio \
   --receive-id-type open_id \
   --receive-id ou_xxx \
   --wav /path/to/input.wav
