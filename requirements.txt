@@ -1,0 +1,7 @@
+# Core (cross-channel voice -> text)
+sherpa-onnx>=1.12.0
+
+# Feishu adapter (optional, only needed if you use adapters/feishu)
+requests>=2.31.0
+piper-tts>=1.2.0
+pathvalidate>=3.2.0
