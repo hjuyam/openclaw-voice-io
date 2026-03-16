@@ -19,13 +19,19 @@ This skill **normalizes voice/audio → text** at the very beginning of the pipe
 - No TTS
 - No “send audio bubble” (channel-specific outbound)
 
-## Requirements
+## Dependencies
 
-- Python 3.10+
-- `ffmpeg`
-- Python deps: see `requirements.txt`
+### Required
 
-## Environment variables
+- Runtime: Python 3.10+
+- Binary: `ffmpeg`
+- Python dependencies: `requirements.txt`
+
+### Optional
+
+- `uv` (recommended) for venv + dependency install
+
+## Environment Variables
 
 - `SHERPA_ONNX_MODEL_DIR` (required)
   - Must contain `tokens.txt` and one of: `model.int8.onnx` / `model.onnx` / `model.fp32.onnx`
@@ -95,3 +101,15 @@ Channel adapters (Feishu/Telegram/others) should only do:
 4) Store (audio reference + text + metadata) for audit/search
 
 If recognition is empty/low-confidence, do **clarification** instead of executing.
+
+## Failure Modes
+
+- Missing `ffmpeg` / audio decode failure:
+  - Symptom: normalization step fails before STT
+  - Fix: install `ffmpeg` and re-run
+- `SHERPA_ONNX_MODEL_DIR` not set or invalid:
+  - Symptom: STT fails to load model files
+  - Fix: set `SHERPA_ONNX_MODEL_DIR` to a directory containing `tokens.txt` and an ONNX model file
+- Empty / low-confidence recognition:
+  - Expected behavior: ask for clarification instead of executing downstream commands
+

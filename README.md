@@ -1,5 +1,11 @@
 # openclaw-voice-io
 
+## 更新记录
+
+- 2026-03-16：对齐 `skills/voice-input-normalizer/SKILL.md` 的依赖声明结构（`Dependencies` / `Environment Variables` / `Failure Modes`），便于安装与排障；能力无实质变化。
+
+---
+
 一个“跨渠道”的语音 I/O 基础能力仓库：它能把你在聊天里发来的语音消息自动识别成文字，从而像普通文本一样触发指令处理（更高效、更易检索）；也可以按需让 OpenClaw 用**语音**回复你（例如通过 Feishu 原生语音气泡）。
 
 - **语音输入（voice → text）**：把语音当作“文本指令的输入形态”，在入口做一次 STT 归一化，输出文本，后续与普通文本指令同构。

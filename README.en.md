@@ -1,5 +1,11 @@
 # openclaw-voice-io
 
+## Updates
+
+- 2026-03-16: Aligned `skills/voice-input-normalizer/SKILL.md` with a clearer dependency declaration structure (`Dependencies` / `Environment Variables` / `Failure Modes`) for easier installation and troubleshooting. No functional changes.
+
+---
+
 A cross-channel voice I/O foundation repo: it turns voice messages you send in chat into text, so they can be handled like normal text commands (faster and searchable); and it can also reply to you with **voice** when needed (e.g., via Feishu native voice bubbles).
 
 - **Voice input (voice → text)**: treat voice as just another form of command input. Do STT normalization once at the very beginning and output text; downstream handling is identical to normal text commands.
